@@ -1,0 +1,34 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load CSV file
+df = pd.read_csv("sales_data.csv")
+
+# Display first 5 rows
+print("First 5 rows:")
+print(df.head())
+
+# Display shape of dataframe
+print("\nShape of DataFrame:")
+print(df.shape)
+
+# Check for missing values
+print("\nMissing values:")
+print(df.isna().sum())
+
+# Filter rows (example: sales greater than 1000)
+filtered_df = df[df["Sales"] > 1000]
+print("\nFiltered Data (Sales > 1000):")
+print(filtered_df)
+
+# Group by Product and calculate total sales
+grouped_data = df.groupby("Product")["Sales"].sum()
+print("\nTotal Sales by Product:")
+print(grouped_data)
+
+# Create bar chart
+grouped_data.plot(kind="bar")
+plt.title("Total Sales by Product")
+plt.xlabel("Product")
+plt.ylabel("Total Sales")
+plt.show()
